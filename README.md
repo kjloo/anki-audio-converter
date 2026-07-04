@@ -1,4 +1,4 @@
-# 📦 WAV to MP3 Audio Compressor for Anki
+# 📦 Anki Audio Converter
 
 A streamlined Anki add-on written in modern Python that scans your decks, converts bloated, space-consuming `.wav` audio card fields into efficient, high-quality `.mp3` files using `ffmpeg`, and automatically rewrites your card field references.
 
@@ -79,7 +79,7 @@ make clean
 2. This generates:
 
    ```text
-   wav_to_mp3_converter.ankiaddon
+   anki_audio.ankiaddon
    ```
 
 3. Open Anki.
@@ -95,16 +95,16 @@ make clean
 ### Running Conversions
 
 1. Inside Anki, open **Tools** from the top menu bar.
-2. Select **Batch Compress WAV → MP3**.
+2. Select **Anki Audio Converter**.
 3. Choose your desired target deck from the popup selection menu.
-4. Let the compressor run. A progress dialog displays the current status, and a completion notification summarizes:
+4. Let the converter run. A progress dialog displays the current status, and a completion notification summarizes:
    - Total notes modified
    - Storage space saved
 
 ### Adjusting Bitrates
 
 1. Open **Tools → Add-ons**.
-2. Select **WAV to MP3 Audio Compressor**.
+2. Select **Anki Audio Converter**.
 3. Click **Config**.
 4. Modify your desired bitrate, for example:
 

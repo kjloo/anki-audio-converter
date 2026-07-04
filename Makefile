@@ -1,6 +1,6 @@
 PYTHON = python
 PIP = pip
-ADDON_DIR = wav_to_mp3_converter
+ADDON_DIR = anki_audio_converter
 
 .PHONY: setup clean zip
 
@@ -19,9 +19,9 @@ setup:
 
 zip:
 	@echo "Packing Add-on package for AnkiWeb..."
-	@rm -f wav_to_mp3_converter.ankiaddon
-	@zip -r wav_to_mp3_converter.ankiaddon __init__.py manifest.json config.json config.md
-	@echo "📦 Generated wav_to_mp3_converter.ankiaddon"
+	@rm -f anki_audio_converter.ankiaddon
+	@zip -r anki_audio_converter.ankiaddon __init__.py manifest.json config.json config.md
+	@echo "📦 Generated anki_audio_converter.ankiaddon"
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
