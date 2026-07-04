@@ -3,3 +3,6 @@
 
 # IDE
 .vscode/
+
+# Output
+anki-audio-converter.ankiaddon

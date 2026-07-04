@@ -1,6 +1,6 @@
 {
-    "name": "WAV to MP3 Audio Compressor",
-    "package": "wav_to_mp3_converter",
+    "name": "Anki Audio Converter",
+    "package": "anki_audio_converter",
     "human_version": "1.0.0",
     "min_version": 241100,
     "max_version": 259999
