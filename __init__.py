@@ -167,7 +167,8 @@ def process_deck_audio() -> None:
     if not ok or not deck_name:
         return
 
-    cids = mw.col.find_cards(f"deck:'{deck_name}'")
+    # FIX: Wrapped {deck_name} in escaped double quotes instead of single quotes
+    cids = mw.col.find_cards(f'deck:"{deck_name}"')
 
     if not cids:
         showInfo("No cards found.")
