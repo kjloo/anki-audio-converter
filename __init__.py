@@ -204,7 +204,7 @@ def process_deck_audio() -> None:
 
 
 # ------------------------------------------------------------
-# Editor context menu (FIXED FEATURE)
+# Editor context menu
 # ------------------------------------------------------------
 
 def on_editor_convert(editor: Editor) -> None:
@@ -221,8 +221,8 @@ def on_editor_convert(editor: Editor) -> None:
     if converted > 0:
         # Commit the modifications to Anki's database
         editor.note.flush()
-        # Force the HTML/Svelte webview screen layout to repaint immediately
-        editor.loadNoteKeepFocus()
+        # FIX: Added 'ing' to match modern Anki API method name
+        editor.loadNoteKeepingFocus()
         showInfo(f"Conversion Complete!\nOptimized {converted} audio references.")
     else:
         showInfo("No matching .wav files found on this card.")
