@@ -207,17 +207,31 @@ def process_deck_audio() -> None:
 # Editor context menu (FIXED FEATURE)
 # ------------------------------------------------------------
 
+def on_editor_convert(editor: Editor) -> None:
+    """Wrapper to cleanly convert, save, and reload fields in the UI view."""
+    if not editor.note:
+        return
+        
+    config = mw.addonManager.getConfig(__name__) or {}
+    bitrate: str = config.get("target_bitrate", "128k")
+    media_dir = mw.col.media.dir()
+    
+    converted = process_note(editor.note, media_dir, bitrate)
+    
+    if converted > 0:
+        # Commit the modifications to Anki's database
+        editor.note.flush()
+        # Force the HTML/Svelte webview screen layout to repaint immediately
+        editor.loadNoteKeepFocus()
+        showInfo(f"Conversion Complete!\nOptimized {converted} audio references.")
+    else:
+        showInfo("No matching .wav files found on this card.")
+
+
 def setup_editor_context_menu(webview: EditorWebView, menu: QMenu) -> None:
     action = menu.addAction("Anki Audio Converter: Convert Note")
-
-    qconnect(
-        action.triggered,
-        lambda: process_note(
-            webview.editor.note,
-            mw.col.media.dir(),
-            (mw.addonManager.getConfig(__name__) or {}).get("target_bitrate", "128k"),
-        ),
-    )
+    # webview.editor safely hands off the tracking instance coordinates
+    qconnect(action.triggered, lambda: on_editor_convert(webview.editor))
 
 
 # ------------------------------------------------------------
